@@ -21,4 +21,4 @@ Bumblebee charge of the solutions = [1.186, 2.986, 4.447]
 
 
 
-**********Code for calculating the solutions will be available after our ongoing work is finished**********
+
