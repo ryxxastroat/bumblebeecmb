@@ -6,6 +6,8 @@ R. Xu, and D. Xu, _Bumblebee cosmology: The FLRW solution and the CMB temperatur
 
 for reference.
 
+**Usage:**
+1. Write input parameters in _bumblebee_input_data.txt_ ($H_0, \Ommega_{b0}, \, \Ommega_{c0}$) 
 
 
 **Units:** Geometrized (G=c=1) and H_0^{-1} taken as the unit length
