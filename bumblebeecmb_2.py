@@ -84,7 +84,7 @@ class clcalc(object):
 
 
    def intgk(self, lnum ):      
-      kfinnpt=3000
+      kfinnpt=2000
       if lnum>300:
          kfinnpt = 1500
       knumfinset=np.linspace(self.kmin, self.kmax, kfinnpt )
@@ -109,21 +109,26 @@ t0 = timeit.time.time()
 switch = 1   
 if __name__ == '__main__':
    if switch:
-      #lset = np.arange(25, 525, 25)
-      #lset = [10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000 ]
-      lset = [10, 50, 100, 150, 200, 250, 300]
+      #lset = np.arange(10, 525, 25)
+      lset = np.array([10, 30, 50, 70, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000 ])
+      #lset = np.array([10, 30, 50, 70, 100, 150, 200, 250, 300, 350, 400])
       clset = np.zeros(len(lset))
 
       xx = clcalc()     
       for ii in range(len(lset)):
          clset[ii] = xx.intgk(lset[ii])
          print( lset[ii], clset[ii])
-
-      ind_norm = 4  
+      
+      clintp = sp_interp1d(lset, lset*(lset+1)*clset, kind=3)      
+      lset1 = np.arange(min(lset), max(lset)+1, 5)
+      clset1 = clintp(lset1)
+      
+      ind_norm = 6  
       normnum = llp1c200/(lset[ind_norm]*(lset[ind_norm]+1)*clset[ind_norm])       
       f = open('bumblebee_cl_data.txt', 'w+')    
-      for ii in range(len(lset)):       
-         f.write(('%d %.9e' % (lset[ii], normnum*lset[ii]*(lset[ii]+1)*clset[ii] ) ) + '\n')
+      for ii in range(len(lset1)):       
+         f.write(('%d %.9e' % (lset1[ii], normnum*clset1[ii] ) ) + '\n')
+         #f.write(('%d %.9e' % (lset1[ii], clintpset[ii] ) ) + '\n')         
       f.close()
          
          
