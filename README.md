@@ -2,7 +2,7 @@
 
 Please see
 
-R. Xu, and D. Xu, _Bumblebee cosmology: The FLRW solution and the CMB temperature anisotropy_
+R. Xu, D. Xu, L. Andersson, P. Amaro-Seoane, and L. Shao, _Bumblebee cosmology: The FLRW solution and the CMB temperature anisotropy_
 
 for reference.
 
