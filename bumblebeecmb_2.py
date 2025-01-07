@@ -7,7 +7,7 @@ from scipy.interpolate import RectBivariateSpline
 import matplotlib.pyplot as plt
 import matplotlib
 from scipy.special import spherical_jn
-from scipy.integrate import trapz
+from scipy.integrate import trapezoid
 from scipy.integrate import simpson
 
 
@@ -22,7 +22,8 @@ inputns = inputdata[4]
  
  
 t0 = timeit.time.time()
-  
+
+fontsize1 = 20
  
    
 
@@ -75,12 +76,12 @@ class clcalc(object):
       #print( source1set*jnset, source2set*jnpset )
       testyset = source1set*jnset + source2set*jnpset
             
-      return trapz(testyset, etfinset)
+      return trapezoid(testyset, etfinset)
       #return simpson(testyset, etfinset) 
       #calhset = self.lna2calh(lnafinset)
       #testy1set = (source1set*jnset + source2set*jnpset)/calhset  
       #print(testy1set)         
-      #return trapz( testy1set, lnafinset )
+      #return trapezoid( testy1set, lnafinset )
 
 
    def intgk(self, lnum ):      
@@ -95,7 +96,7 @@ class clcalc(object):
          transf[i] = self.intglna(knumfinset[i], lnum)
          testyset[i] = ( self.intglna(knumfinset[i], lnum) )**2 * (knumfinset[i])**(self.nsnum-2)
 
-      return trapz(testyset, knumfinset) 
+      return trapezoid(testyset, knumfinset) 
 
 
 
@@ -130,8 +131,12 @@ if __name__ == '__main__':
          f.write(('%d %.9e' % (lset1[ii], normnum*clset1[ii] ) ) + '\n')
          #f.write(('%d %.9e' % (lset1[ii], clintpset[ii] ) ) + '\n')         
       f.close()
-         
-         
+      plt.plot(lset1, normnum*clset1)
+      plt.ylabel(r'$l(l+1)C_l$', fontsize=fontsize1)
+      plt.xlabel(r'$l$', fontsize=fontsize1)
+      plt.savefig('bumblebee_cl_fig.pdf', format='pdf', bbox_inches='tight')         
+       
+       
    else:
       xx = clcalc()
       testkset = np.linspace(0.1, 1500, 2) 
