@@ -85,8 +85,8 @@ class clcalc(object):
 
    def intgk(self, lnum ):      
       kfinnpt=2000
-      #if lnum>300:
-         #kfinnpt = 1500
+      if lnum>300:
+         kfinnpt = 1500
       knumfinset=np.linspace(self.kmin, self.kmax, kfinnpt )
       transf = np.zeros(kfinnpt)
       testyset = np.zeros(kfinnpt)
