@@ -130,7 +130,11 @@ if __name__ == '__main__':
          f.write(('%d %.9e' % (lset1[ii], normnum*clset1[ii] ) ) + '\n')
          #f.write(('%d %.9e' % (lset1[ii], clintpset[ii] ) ) + '\n')         
       f.close()
-         
+      plt.plot(lset1, normnum*clset1)
+      plt.ylabel(r'$l(l+1)C_l$', fontsize=fontsize1)
+      plt.xlabel(r'$l$', fontsize=fontsize1)
+      plt.savefig('GR_cl_fig.pdf', format='pdf', bbox_inches='tight')
+      
          
    else:
       xx = clcalc()
